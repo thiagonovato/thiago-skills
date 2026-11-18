@@ -10,7 +10,8 @@ Separar o CLI `todo-scan` do repositório de skills Cursor. Dois diretórios irm
 | Conteúdo de `thiago-skills` | Só `skills/`, `.cursor/rules/`, `mcp/`, `README.md` (+ `.gitignore`) |
 | Scaffolding Cursor no CLI | Não — só em `thiago-skills` |
 | Histórico git do CLI | Repo limpo (sem histórico de `feat/todo-scan`) |
-| GitHub | `thiagonovato/todo-scan`, **private** |
+| GitHub | `thiagonovato/todo-scan` **private** (novo); `thiago-skills` no remote atual |
+| Sync final | Push dos dois repos para o GitHub após a limpeza |
 | Código do CLI | Snapshot inalterado; sem mudança de comportamento |
 
 ## Estrutura alvo
@@ -55,11 +56,11 @@ Separar o CLI `todo-scan` do repositório de skills Cursor. Dois diretórios irm
 1. Criar `/Users/thiagonovato/www/todo-scan` com o snapshot + docs + README.
 2. `npm install` e `npm test` para validar o snapshot.
 3. `git init`, commit inicial, `gh repo create thiagonovato/todo-scan --private --source=. --remote=origin --push` com a conta `thiagonovato`.
-4. Em `thiago-skills`: criar `.cursor/rules/` e `mcp/`, escrever README, remover `docs/` e o worktree do CLI (`git worktree remove`), ajustar `.gitignore` se preciso, commit de limpeza. Push de `thiago-skills` só se pedido.
+4. Em `thiago-skills`: criar `.cursor/rules/` e `mcp/`, escrever README, remover `docs/` e o worktree do CLI (`git worktree remove`), ajustar `.gitignore` se preciso, commit de limpeza.
+5. **Sync:** `git push` em `todo-scan` (já no create) e `git push` em `thiago-skills` para o remote atual, para o resultado final ficar igual no disco e no GitHub nos dois repos. Devolver os dois links no final.
 
 ## Fora de escopo
 
 - Alterar comportamento, API ou testes do CLI
 - Publicar no npm
-- Push automático de `thiago-skills`
 - Preencher rules ou MCP configs
