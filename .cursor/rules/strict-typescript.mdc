@@ -1,0 +1,56 @@
+---
+description: Strict TypeScript — no any, no unvalidated casts, tests call the real function
+alwaysApply: true
+---
+
+# Strict TypeScript
+
+## Rules
+
+1. **No `any`.** Prefer real types. If the value is unknown, validate or narrow before use.
+2. **No `as` / `as unknown as` without validation.** A cast is allowed only after a check that rejects non-`T`, or with a test that proves a non-`T` is rejected. A bare cast that only silences `tsc` is forbidden.
+3. **Every test calls the real function.** Do not mock the unit under test. Assert on its return value or observable behavior.
+
+`as T` on a known-good `T` fixture is fine when the assertion calls the real function.
+
+## Examples
+
+```typescript
+// ❌ BAD — any drops the type
+export function quote(order: any): number {
+  return order.subtotal * 1.08;
+}
+
+// ✅ GOOD
+type Order = { subtotal: number };
+export function quote(order: Order): number {
+  return order.subtotal * 1.08;
+}
+```
+
+```typescript
+// ❌ BAD — cast with no rejected-value check
+const user = payload as User;
+
+// ✅ GOOD — validate, then use
+function parseUser(payload: unknown): User {
+  if (!payload || typeof payload !== "object" || !("id" in payload)) {
+    throw new Error("invalid user");
+  }
+  return payload as User; // reached only after rejection of non-User
+}
+```
+
+```typescript
+// ❌ BAD — mocks the unit under test
+jest.mock("./quote", () => ({ quote: jest.fn(() => 108) }));
+test("adds tax", () => {
+  expect(require("./quote").quote({ subtotal: 100 })).toBe(108);
+});
+
+// ✅ GOOD — calls the real function
+import { quote } from "./quote";
+test("adds tax", () => {
+  expect(quote({ subtotal: 100 })).toBe(108);
+});
+```

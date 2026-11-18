@@ -1,6 +1,6 @@
 # thiago-skills
 
-Personal collection of [Cursor Agent Skills](https://cursor.com/docs) plus empty scaffolding for Cursor rules and MCP configs. This is not an application — each skill is a folder under `skills/` with a `SKILL.md`.
+Personal collection of [Cursor Agent Skills](https://cursor.com/docs), Cursor project rules, and empty MCP scaffolding. This is not an application — each skill is a folder under `skills/` with a `SKILL.md`.
 
 ## Layout
 
@@ -8,7 +8,8 @@ Personal collection of [Cursor Agent Skills](https://cursor.com/docs) plus empty
 thiago-skills/
 ├── skills/                 # Installable Agent Skills
 │   └── reviewing-typescript-prs/
-├── .cursor/rules/          # Cursor project rules (empty for now)
+├── .cursor/rules/          # Cursor project rules (always-on)
+│   └── strict-typescript.mdc
 └── mcp/                    # MCP configs (empty for now)
 ```
 
