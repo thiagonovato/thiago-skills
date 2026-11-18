@@ -1,6 +1,6 @@
 ---
 name: reviewing-typescript-prs
-description: Use when reviewing a TypeScript pull request and tsc is green, tests pass, coverage went up, or someone says not to block on type nits. Use when the diff has any, as, as unknown as, a type predicate (x is T), @ts-ignore, @ts-expect-error, or a test that mocks the unit under test. Use when tempted to approve and ask for a follow-up after ship. Use when the user says revisar PR, revisar pull request, or pede foco em tipos e testes.
+description: Use when reviewing a TypeScript pull request and tsc is green, tests pass, coverage went up, or someone says not to block on type nits. Use when the diff has any, as, as unknown as, a type predicate (x is T), @ts-ignore, @ts-expect-error, or a test that mocks the unit under test. Use when tempted to approve and ask for a follow-up after ship. Use when the user asks to review a PR or to focus on types and tests.
 ---
 
 # Reviewing TypeScript PRs
