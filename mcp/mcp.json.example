@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "example-server": {
+      "command": "npx",
+      "args": ["-y", "example-mcp-server"],
+      "env": {
+        "API_KEY": "<PASTE_HERE>",
+        "BASE_URL": "<PASTE_HERE>"
+      }
+    }
+  }
+}
